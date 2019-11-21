@@ -23,9 +23,11 @@
           </v-col>
         </v-row>
       </v-container>
+      
     </v-content>
   </v-app>
 </template>
+
 
 <script>
 export default {

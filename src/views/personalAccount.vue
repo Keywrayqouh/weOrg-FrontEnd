@@ -26,11 +26,11 @@
           <hr>
 
           <v-list-item>
-            <router-link to="/Home">HOME</router-link>
+            <router-link to="/VIEW PORFOLIO">VIEW PORFOLIO</router-link>
           </v-list-item>
 
           <v-list-item>
-            <router-link to="/About">ABOUT</router-link>
+            <router-link to="/UPDATE PORFOLIO">UPDATE PORFOLIO</router-link>
           </v-list-item>
 
           <div>
@@ -38,20 +38,15 @@
               <template v-slot:activator="{ on }">
                 <v-btn dark v-on="on">CATEGORIES</v-btn>
               </template>
-              <v-list style="text-align:center">
-                <span>
-                  <router-link to="/viewPorfolio" tag="li">Concert</router-link>
-                </span>
-
-                <span>
-                  <router-link to="/Birthday" tag="li">Birthday</router-link>
-                </span>
-                <span>
-                  <router-link to="/Graduation" tag="li">Graduation</router-link>
-                </span>
-                <span>
-                  <router-link to="/Wedding" tag="li">Wedding</router-link>
-                </span>
+              <v-list>
+                <v-list-item >
+                   <v-list-item-title> <router-link to="/viewPorfolio" >Concert</router-link></v-list-item-title>
+                   
+                 
+                  <router-link to="/Birthday">Birthday</router-link>
+                  <router-link to="/Graduation">Graduation</router-link>
+                  <router-link to="/Wedding">Wedding</router-link>
+                </v-list-item>
               </v-list>
             </v-menu>
           </div>
@@ -98,15 +93,5 @@ export default {
   }
 };
 </script>
-<style scoped>
-li {
-  display: block;
-}
-
-li:hover {
-  color: red;
-}
-</style>
-
 
 

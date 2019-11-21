@@ -10,6 +10,7 @@
   </v-carousel>
 </template>
 
+
 <script>
   export default {
     data () {
