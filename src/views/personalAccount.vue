@@ -2,11 +2,12 @@
   <div>
     <v-system-bar color="deep-purple darken-3"></v-system-bar>
 
-    <v-app-bar color="deep-purple accent-4" dark prominent>
+    <v-app-bar color="grey accent-4" dark prominent>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+<h2 style="float:left">ABout</h2>
 
       <v-spacer></v-spacer>
-
+      
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
@@ -26,35 +27,14 @@
           <hr>
 
           <v-list-item>
-            <router-link to="/VIEW PORFOLIO">VIEW PORFOLIO</router-link>
+            <router-link to="/viewporfolio">VIEW PORFOLIO</router-link>
           </v-list-item>
 
           <v-list-item>
-            <router-link to="/UPDATE PORFOLIO">UPDATE PORFOLIO</router-link>
-          </v-list-item>
-
-          <div>
-            <v-menu>
-              <template v-slot:activator="{ on }">
-                <v-btn dark v-on="on">CATEGORIES</v-btn>
-              </template>
-              <v-list>
-                <v-list-item >
-                   <v-list-item-title> <router-link to="/viewPorfolio" >Concert</router-link></v-list-item-title>
-                   
-                 
-                  <router-link to="/Birthday">Birthday</router-link>
-                  <router-link to="/Graduation">Graduation</router-link>
-                  <router-link to="/Wedding">Wedding</router-link>
-                </v-list-item>
-              </v-list>
-            </v-menu>
-          </div>
-          <v-list-item>
-            <router-link to="/Login">LOGIN</router-link>
+            <router-link to="/updateporfolio">UPDATE PORFOLIO</router-link>
           </v-list-item>
           <v-list-item>
-            <router-link to="/Signup">SIGNUP</router-link>
+            <router-link to="/">LOGOUT</router-link>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -63,6 +43,7 @@
 </template>
 <script>
 export default {
+  name: "personalAccount",
   data: () => ({
     drawer: false,
     group: null,

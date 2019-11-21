@@ -4,8 +4,17 @@
       <br>
       <h2 style="text-align:center;margin-top:2%">ABOUT</h2>
 
-      <v-simple-table style="width:50%;height:40%;margin-left:45%;margin-top:1%;margin-bottom:5%">
+      <v-simple-table style="width:80%;height:40%;margin-left:10%;margin-top:1%;margin-bottom:5%">
+         
+       
+      
         <template v-slot:default>
+          <center>
+           <v-avatar size="150" style="margin-top:5%" >
+          <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+        </v-avatar>
+        <h2>MEllyne GRace NAdela</h2><br>
+        </center>
           <thead>
             <tr></tr>
           </thead>
@@ -19,14 +28,7 @@
       </v-simple-table>
       <br>
 
-      <div style="float:left;margin-top:-25%;margin-left:10%">
-        <v-avatar size="250" style="margin-left:15%;position:relative;margin-top:-40%">
-          <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
-        </v-avatar>
-        <h1 style="position:relative;margin-top:5%">Mellyne Grace Nadela</h1>
-      </div>
     </v-card>
-
     <template >
       <v-row style="width:90%;margin-left:5%;margin-right:5%;margin-top:5%">
         

@@ -4,6 +4,8 @@ import Landing from "../components/Landing.vue";
 import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
 import viewPorfolio from "../views/viewPorfolio.vue";
+import personalAccount from '../views/personalAccount.vue';
+import Concert from '../views/Concert.vue'
 
 
 Vue.use(VueRouter);
@@ -11,6 +13,11 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/Home",
+    name: "home",
+    component: Landing
+  },
+  {
+    path: "/",
     name: "home",
     component: Landing
   },
@@ -36,6 +43,16 @@ const routes = [
     path: "/ViewPorfolio",
     name: "viewPorfolio",
     component: viewPorfolio
+  },
+  {
+    path: '/personalAccount', 
+    name: 'personalAccount',
+    component: personalAccount
+  },
+  {
+    path: '/concert', 
+    name: 'concert',
+    component: Concert
   },
 ];
 

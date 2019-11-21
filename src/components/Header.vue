@@ -16,51 +16,48 @@
       <v-list nav dense>
         <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
           <v-avatar size="100" style="margin-left:30%">
-            <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+            <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
           </v-avatar>
           <center>
             <h2>WeOrg!</h2>
           </center>
-          <br>
+          <br />
 
-          <hr>
+          <hr />
 
-          <v-list-item>
-            <router-link to="/Home">HOME</router-link>
-          </v-list-item>
-
-          <v-list-item>
-            <router-link to="/About">ABOUT</router-link>
-          </v-list-item>
-
-          <div>
+          <v-list nav>
+            <v-list-item link>
+              <v-list-item-icon></v-list-item-icon>
+              <v-list-item-title @click="goto('/Home')">HOME</v-list-item-title>
+            </v-list-item>
+            <v-list-item link>
+              <v-list-item-icon></v-list-item-icon>
+              <v-list-item-title @click="goto('/About')">About us</v-list-item-title>
+            </v-list-item>
             <v-menu>
               <template v-slot:activator="{ on }">
                 <v-btn dark v-on="on">CATEGORIES</v-btn>
               </template>
-              <v-list style="text-align:center">
-                <span>
-                  <router-link to="/viewPorfolio" tag="li">Concert</router-link>
-                </span>
-
-                <span>
-                  <router-link to="/Birthday" tag="li">Birthday</router-link>
-                </span>
-                <span>
-                  <router-link to="/Graduation" tag="li">Graduation</router-link>
-                </span>
-                <span>
-                  <router-link to="/Wedding" tag="li">Wedding</router-link>
-                </span>
+              <v-list>
+                <v-list-item >
+                   <v-list-item-title> <router-link to="/Concert" >Concert</router-link></v-list-item-title>
+                   
+                 
+                  <router-link to="/Birthday">Birthday</router-link>
+                  <router-link to="/Graduation">Graduation</router-link>
+                  <router-link to="/Wedding">Wedding</router-link>
+                </v-list-item>
               </v-list>
             </v-menu>
-          </div>
-          <v-list-item>
-            <router-link to="/Login">LOGIN</router-link>
-          </v-list-item>
-          <v-list-item>
-            <router-link to="/Signup">SIGNUP</router-link>
-          </v-list-item>
+            <v-list-item link>
+              <v-list-item-icon></v-list-item-icon>
+              <v-list-item-title @click="goto('/Login')">LOGIN</v-list-item-title>
+            </v-list-item>
+            <v-list-item link>
+              <v-list-item-icon></v-list-item-icon>
+              <v-list-item-title @click="goto('/Signup')">SIGNUP</v-list-item-title>
+            </v-list-item>
+          </v-list>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -68,6 +65,12 @@
 </template>
 <script>
 export default {
+   name: 'Sidebar',
+  methods:{
+      goto(link){
+        this.$router.push({path:link});
+      }
+    },
   data: () => ({
     drawer: false,
     group: null,
