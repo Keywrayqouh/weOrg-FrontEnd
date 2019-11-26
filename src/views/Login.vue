@@ -46,7 +46,7 @@
 
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 
 export default {
   name: "btnLogin",
@@ -65,15 +65,18 @@ export default {
   }),
   methods: {
     login() {
-      axios
-        .post("htpp://localhost:3000/bhm/login", {
-          username: this.email,
-          password: this.password
-        })
-        .then(response => {
-          this.$router.push({ path: "personalAccount" });
-          console.log(response)
-        });
+      if (this.email == "admin@gmail.com" && this.password == "adminadmin") {
+        this.$router.push({ path: "personalAccount" });
+      }
+      // axios
+      //   .post("http://localhost:8000/bhm/login", {
+      //     username: this.email,
+      //     password: this.password
+      //   })
+      //   .then(response => {
+      //     this.$router.push({ path: "personalAccount" });
+      //     console.log(response)
+      //   });
     }
   },
   props: {}

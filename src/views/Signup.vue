@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 export default {
   
   props: {
@@ -74,10 +74,10 @@ export default {
   }),
 
   methods: {
-    
     submit() {
-      axios
-        .post("https://172.16.3.26:8000/account", {
+      console.log(this.address)
+      this.axios
+        .post('http://localhost:8000/account', {
           name: this.name,
           address: this.address,
           email: this.email,
