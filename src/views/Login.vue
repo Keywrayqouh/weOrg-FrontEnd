@@ -12,11 +12,13 @@
               <v-card-text>
                 <v-form>
                   <v-text-field
-                    v-model="username"
+                    v-model="email"
                     label="Email"
                     name="login"
                     prepend-icon="mdi-account"
                     type="text"
+                    :rules="emailRules"
+                    required
                   ></v-text-field>
                   <v-text-field
                     v-model="password"
@@ -25,6 +27,8 @@
                     name="password"
                     prepend-icon="mdi-lock"
                     type="password"
+                    :rules="passwordRules"
+                    required
                   ></v-text-field>
                 </v-form>
               </v-card-text>
@@ -42,21 +46,34 @@
 
 
 <script>
+import axios from "axios";
+
 export default {
   name: "btnLogin",
-  data() {
-    return {
-      username: "",
-      password: ""
-    };
-  },
+  data: () => ({
+    valid: true,
+    password: "",
+    passwordRules: [
+      v => !!v || "password  is required",
+      v => (v && v.length >= 8) || "Name must be less  8 numbers"
+    ],
+    email: "",
+    emailRules: [
+      v => !!v || "E-mail is required",
+      v => /.+@.+\..+/.test(v) || "E-mail must be valid"
+    ]
+  }),
   methods: {
     login() {
-      if (this.username == "admin@gmail.com" && this.password == "admin") {
-        this.$router.push({ name: "personalAccount" });
-      } else {
-        alert("Invalid credentials");
-      }
+      axios
+        .post("htpp://localhost:3000/bhm/login", {
+          username: this.email,
+          password: this.password
+        })
+        .then(response => {
+          this.$router.push({ path: "personalAccount" });
+          console.log(response)
+        });
     }
   },
   props: {}

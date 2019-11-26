@@ -11,21 +11,21 @@
               </v-toolbar>
               <v-card-text>
                 <template>
-                  <v-form ref="form" v-model="valid" :lazy-validation="lazy">
+                  <v-form ref="form" v-model="valid" >
                     <v-text-field v-model="name" :rules="nameRules" label="Name" required></v-text-field>
                     <v-text-field v-model="address" :rules="nameRules" label="Address" required></v-text-field>
                     <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
-                    <v-text-field v-model="password" :rules="passwordRules" label="Password" type="password" required></v-text-field>
-                    <v-text-field v-model="contact" :rules="numberRules" label="Contact Number" type="number" min=0 required></v-text-field>
-                    <v-text-field v-model="price"  label="Price" type="number" min=1 required></v-text-field>
+                    <v-text-field v-model="password" :rules="passwordRules" label="Password" type="password" required ></v-text-field>
+                    <v-text-field v-model="contact" :rules="numberRules" label="Contact Number" type="number" min="0" required></v-text-field>
+                    <v-text-field v-model="price" label="Price" type="number" min="1" required></v-text-field>
                     <v-text-field v-model="packages" :rules="packageRules" label="Package" required></v-text-field>
-                    <v-text-field v-model="photo"  label="Photo" type="file" required></v-text-field>
+                    <v-text-field v-model="photo" label="Photo" type="file" required></v-text-field>
                   </v-form>
                 </template>
               </v-card-text>
               <v-card-actions>
                 <v-spacer />
-                <v-btn class="mr-4" @click="submit">submit</v-btn>
+                 <v-btn v-on:click="submit()" color="secondary">Submit</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -36,75 +36,62 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
+  
   props: {
     source: String
   },
   data: () => ({
+    address:"",
+    price:"",
+    photo:"",
+
     valid: true,
     name: "",
     nameRules: [
       v => !!v || "Name is required",
       v => (v && v.length <= 10) || "Name must be less than 10 characters"
     ],
-    contact:"",
-    numberRules:[
-      v=>!!v||"Contact Number is required",
-      v => (v && v.length <= 11 ) || "Name must be less  11 numbers",
-       v => (v && v.length >= 11 ) || "Name must be less  11 numbers",
-      
-
+    contact: "",
+    numberRules: [
+      v => !!v || "Contact Number is required",
+      v => (v && v.length <= 11) || "Name must be less  11 numbers",
+      v => (v && v.length >= 11) || "Name must be less  11 numbers"
     ],
-    packages:"",
-    packageRules:[
-      v=>!!v||"Package is important"
-    ],
-    password:"",
-    passwordRules:[
-       v => !! v ||"password  is required",
-      v => (v && v.length >= 8 ) || "Name must be less  8 numbers",
-
-
+    packages: "",
+    packageRules: [v => !!v || "Package is important"],
+    password: "",
+    passwordRules: [
+      v => !!v || "password  is required",
+      v => (v && v.length >= 8) || "Name must be less  8 numbers"
     ],
     email: "",
     emailRules: [
       v => !!v || "E-mail is required",
       v => /.+@.+\..+/.test(v) || "E-mail must be valid"
     ],
-    select: null,
-    items: ["Item 1", "Item 2", "Item 3", "Item 4"],
-    checkbox: false,
-    lazy: false
   }),
 
   methods: {
-    validate() {
-      if (this.$refs.form.validate()) {
-        this.snackbar = true;
-      }
-    },
-    reset() {
-      this.$refs.form.reset();
-    },
-    resetValidation() {
-      this.$refs.form.resetValidation();
+    
+    submit() {
+      axios
+        .post("https://172.16.3.26:8000/account", {
+          name: this.name,
+          address: this.address,
+          email: this.email,
+          password: this.password,
+          contact: this.contact,
+          price: this.price,
+          packages: this.packages,
+          photo: this.photo
+        })
+        .then(response => {
+          this.$router.push({ path: "Login" });
+          console.log(response);
+        });
     }
-  },
-  // data() {
-  //   return {
-  //     name: "",
-  //     address: "",
-  //     email: "",
-  //     password: "",
-  //     contact: "",
-  //     event: "",
-  //     range: "",
-  //     packages: "",
-  //     photoUp: ""
-  //   };
-  // },
-  method: {
-    signup() {}
   }
 };
 </script>
