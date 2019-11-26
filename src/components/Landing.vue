@@ -1,34 +1,152 @@
+
+
 <template>
-  <v-carousel>
-    <v-carousel-item
-      v-for="(item,i) in items"
-      :key="i"
-      :src="item.src"
-      reverse-transition="fade-transition"
-      transition="fade-transition"
-    ></v-carousel-item>
-  </v-carousel>
+  <div style="background-color:grey">
+    <v-container fluid>
+      <v-row dense>
+        <v-col cols="6" sm="4">
+          <v-card>
+            <v-img
+              src="../assets/wed.png"
+              class="white--text align-end"
+            
+              height="300px"
+            >
+            <v-card-title>WEDDING</v-card-title>
+            </v-img>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+
+              <v-btn icon>
+                <v-icon>mdi-heart</v-icon>
+              </v-btn>
+
+              <v-btn icon>
+                <v-icon>mdi-bookmark</v-icon>
+              </v-btn>
+
+              <v-btn icon>
+                <v-icon>mdi-share-variant</v-icon>
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+        <v-col cols="6" sm="4">
+          <v-card>
+            <v-img
+              src="../assets/cons.jpg"
+              class="white--text align-end"
+            
+              height="300px"
+            >
+            <v-card-title>CONCERT</v-card-title>
+            </v-img>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+
+              <v-btn icon>
+                <v-icon>mdi-heart</v-icon>
+              </v-btn>
+
+              <v-btn icon>
+                <v-icon>mdi-bookmark</v-icon>
+              </v-btn>
+
+              <v-btn icon>
+                <v-icon>mdi-share-variant</v-icon>
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+        <v-col cols="6" sm="4">
+          <v-card>
+            <v-img
+              src="../assets/ber.jpg"
+              class="white--text align-end"
+            
+              height="300px"
+            >
+            <v-card-title>BIRTHDAY PARTY</v-card-title>
+            </v-img>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+
+              <v-btn icon>
+                <v-icon>mdi-heart</v-icon>
+              </v-btn>
+
+              <v-btn icon>
+                <v-icon>mdi-bookmark</v-icon>
+              </v-btn>
+
+              <v-btn icon>
+                <v-icon>mdi-share-variant</v-icon>
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+        
+      </v-row>
+
+    </v-container>
+    <hr>
+    <template>
+     
+      <v-container fluid>
+        <v-row>
+          <v-col cols="6" sm="6">
+            <v-img src="../assets/wed1.png"></v-img>
+          </v-col>
+          <h1>The day I meet you i found my missing piece.<br>You complete me and make me a better person.<br> I love you with all my heart and all my soul</h1>
+        </v-row>
+      </v-container>
+    </template>
+
+    <hr />
+      <template>
+     
+      <v-container fluid>
+        <v-row><h1 id="left">The day I meet you i found my missing piece.<br>You complete me and make me a better person.<br> I love you with all my heart and all my soul</h1>
+          <v-col cols="6" sm="6">
+            <v-img src="../assets/wed1.png"></v-img>
+          </v-col>
+          
+        </v-row>
+      </v-container>
+    </template>
+  </div>
 </template>
 
-<script>
-  export default {
-    data () {
-      return {
-        items: [
-          {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
-          },
-          {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
-          },
-          {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
-          },
-          {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
-          },
-        ],
-      }
-    },
-  }
-</script>
+
+<style scoped>
+.bottom-gradient {
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.4) 0%,
+    transparent 72px
+  );
+}
+
+.repeating-gradient {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 0, 0, 0.25),
+    rgba(255, 0, 0, 0.25) 5px,
+    rgba(0, 0, 255, 0.25) 5px,
+    rgba(0, 0, 255, 0.25) 10px
+  );
+}
+p {
+  font-size: 30px;
+  color: yellow;
+}
+h1 {
+  float: right;
+  position: relative;
+  margin-top: 20px;
+  text-align:center
+}
+#left{
+  float:left
+}
+</style>

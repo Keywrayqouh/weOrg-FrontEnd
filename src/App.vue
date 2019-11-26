@@ -2,6 +2,12 @@
   <v-app>
     <Header v-if="loginNa()" />
     <router-view />
+    <template>
+  <v-footer color="silver">
+    <v-spacer></v-spacer>
+    <div>&copy; {{ new Date().getFullYear() }}</div>
+  </v-footer>
+</template>
   </v-app>
 </template>
 

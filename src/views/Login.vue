@@ -1,4 +1,5 @@
 <template>
+<div>
   <v-app class="form" id="inspire">
     <v-content>
       <v-container style="margin-top:-10%">
@@ -42,11 +43,12 @@
       </v-container>
     </v-content>
   </v-app>
+  </div>
 </template>
 
 
 <script>
-// import axios from "axios";
+import axios from "axios";
 
 export default {
   name: "btnLogin",
@@ -65,18 +67,15 @@ export default {
   }),
   methods: {
     login() {
-      if (this.email == "admin@gmail.com" && this.password == "adminadmin") {
-        this.$router.push({ path: "personalAccount" });
-      }
-      // axios
-      //   .post("http://localhost:8000/bhm/login", {
-      //     username: this.email,
-      //     password: this.password
-      //   })
-      //   .then(response => {
-      //     this.$router.push({ path: "personalAccount" });
-      //     console.log(response)
-      //   });
+      axios
+        .post("http://localhost:8001/login", {
+          username: this.email,
+          password: this.password
+        })
+        .then(response => {
+          this.$router.push({ path: "personalAccount" });
+          console.log(response)
+        });
     }
   },
   props: {}
@@ -84,6 +83,6 @@ export default {
 </script>
 <style scoped>
 .form {
-  margin-top: 20%;
+  margin-top: 15%;
 }
 </style>
