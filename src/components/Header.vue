@@ -1,104 +1,100 @@
 <template>
   <div>
-    <v-system-bar color="grey"></v-system-bar>
+    <v-system-bar color="grey" height="150%"></v-system-bar>
+     
+        
+     
+    <!-- <v-app-bar color="grey" dark prominent>
+    <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>-->
 
-    <v-app-bar color="grey" dark prominent>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+    <v-spacer></v-spacer>
+    
 
-      <v-spacer></v-spacer>
+    <!-- </v-app-bar> -->
 
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-    </v-app-bar>
+    <!--  -->
+    <template>
+      <v-bottom-navigation dark shift>
+        
+        
+        <v-btn icon>
+          <span>HOME</span>
+          <v-icon @click="goto('/Home')">mdi-home</v-icon>
+        </v-btn>
+        <v-col cols="12" sm="2" style="margin-top:-20px">
+          <v-text-field label="SEARCH" single-line></v-text-field>
+        </v-col>
 
-    <v-navigation-drawer v-model="drawer" absolute bottom temporary height="60%">
-      <v-list nav dense>
-        <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
-          <v-avatar size="100" style="margin-left:30%">
-            <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
-          </v-avatar>
-          <center>
-            <h2>WeOrg!</h2>
-          </center>
-          <br />
-
-          <hr />
-
-          <v-list nav>
-            <v-list-item link>
-              <v-list-item-icon></v-list-item-icon>
-              <v-list-item-title @click="goto('/Home')">HOME</v-list-item-title>
-            </v-list-item>
-            <v-list-item link>
-              <v-list-item-icon></v-list-item-icon>
-              <v-list-item-title @click="goto('/About')">About us</v-list-item-title>
-            </v-list-item>
-            <v-menu>
-              <template v-slot:activator="{ on }">
-                <v-btn dark v-on="on">CATEGORIES</v-btn>
-              </template>
-              <v-list>
-                <v-list-item >
-                   <v-list-item-title> <router-link to="/Concert" >Concert</router-link></v-list-item-title>
-                   
-                 
-                  <router-link to="/Birthday">Birthday</router-link>
-                  <router-link to="/Graduation">Graduation</router-link>
-                  <router-link to="/Wedding">Wedding</router-link>
-                </v-list-item>
-              </v-list>
-            </v-menu>
-            <v-list-item link>
-              <v-list-item-icon></v-list-item-icon>
-              <v-list-item-title @click="goto('/Login')">LOGIN</v-list-item-title>
-            </v-list-item>
-            <v-list-item link>
-              <v-list-item-icon></v-list-item-icon>
-              <v-list-item-title @click="goto('/Signup')">SIGNUP</v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-list-item-group>
-      </v-list>
-    </v-navigation-drawer>
+        <v-btn icon >
+          <span>Search</span>
+          <v-icon v-on:click="searchOne()">mdi-magnify</v-icon>
+        </v-btn>
+         <v-btn icon style="margin-left:20%">
+          <span>Login</span>
+          <v-icon @click="goto('/Login')">mdi-login</v-icon>
+        </v-btn>
+         <v-btn icon >
+          <span>Sigup</span>
+          <v-icon @click="goto('/Signup')">mdi-clipboard-account</v-icon>
+        </v-btn>
+      </v-bottom-navigation>
+    </template>
   </div>
 </template>
+
+   
 <script>
 export default {
-   name: 'Sidebar',
-  methods:{
-      goto(link){
-        this.$router.push({path:link});
-      }
-    },
-  data: () => ({
-    drawer: false,
-    group: null,
-    items: [
-      {
-        title: "Birthday",
-        to: "/Birthday "
-      },
-      {
-        title: "Burial",
-        to: "/Burial"
-      },
-      {
-        title: "Baptist",
-        to: "/Baptist"
-      },
-      {
-        title: "Wedding",
-        to: "/Wedding"
-      }
-    ]
-  }),
+  name: "Sidebar",
 
-  watch: {
-    group() {
-      this.drawer = false;
+  // computed: {
+  //   color () {
+  //     switch (this.bottomNav) {
+  //       case 0: return 'blue-grey'
+  //       case 1: return 'teal'
+  //       case 2: return 'brown'
+  //       case 3: return 'indigo'
+  //     }
+  //   },
+  // },
+  methods: {
+    goto(link) {
+      this.$router.push({ path: link });
     }
   }
+  // },
+  // data: () => ({
+  //   drawer: false,
+  //   group: null,
+  //   items: [
+  //     {
+  //       title: "Birthday",
+  //       to: "/Birthday "
+  //     },
+  //     {
+  //       title: "Burial",
+  //       to: "/Burial"
+  //     },
+  //     {
+  //       title: "Baptist",
+  //       to: "/Baptist"
+  //     },
+  //     {
+  //       title: "Wedding",
+  //       to: "/Wedding"
+  //     }
+  //   ]
+  // }),
+  // methods:{
+  //   search(){
+  //     axios.get
+  //   }
+  // },
+  // watch: {
+  //   group() {
+  //     this.drawer = false;
+  //   }
+  // }
 };
 </script>
 <style scoped>

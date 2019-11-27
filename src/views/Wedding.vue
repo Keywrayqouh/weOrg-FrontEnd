@@ -1,13 +1,29 @@
 <template>
-  <v-container fluid>
-    <v-data-table :headers="headers" :items="org">
-    </v-data-table>
-
+  <v-data-table
+    :headers="headers"
+    :items="org"
+    sort-by="calories"
+    class="elevation-1"
     
-  </v-container>
+  >
+    <template v-slot:items.action="{ items }">
+      <v-icon
+        small
+        class="mr-2"
+        @click="editItem(items)"
+      >
+        mdi-login
+      </v-icon>
+      <v-icon
+        small
+        @click="deleteItem(items)"
+      >
+        delete
+      </v-icon>
+    </template>
+    
+  </v-data-table>
 </template>
-
-
 <script>
 export default {
   data() {
@@ -20,9 +36,9 @@ export default {
           sortable: false,
           value: "name"
         },
-        { text: "Address", value: "address",sortable: false, },
-        { text: "Contact", value: "contact",sortable: false, },
-        { text: "Action", value: "event" ,sortable: false,}
+        { text: "Address", value: "address", sortable: false },
+        { text: "Contact", value: "contact", sortable: false },
+        { text: "Action", value: "event", sortable: false }
       ]
     };
   },
@@ -30,9 +46,9 @@ export default {
   methods: {
     addOrg() {
       var org = [];
-      var event = "concert";
+      var event = "wedding";
       this.axios
-        .post("http://localhost:8000/retrieveOneEvent/"+event,)
+        .post("http://localhost:8000/retrieveOneEvent/" + event)
         .then(response => {
           console.log(response);
           var dataT = response.data;
@@ -43,8 +59,7 @@ export default {
             org.push({
               name: dataT[counter].name,
               address: dataT[counter].address,
-              contact: dataT[counter].contact,
-              event: dataT[counter].event
+              contact: dataT[counter].contact
             });
           }
           // console.log(org);
@@ -57,8 +72,8 @@ export default {
       return org;
     }
   },
-   mounted() {
-      this.addOrg();
-    }
+  mounted() {
+    this.addOrg();
+  }
 };
 </script>

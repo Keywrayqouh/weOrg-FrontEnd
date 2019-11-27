@@ -1,7 +1,11 @@
 
 
 <template>
-  <div style="background-color:grey">
+
+  <div id="bg">
+    <span >
+  
+</span>
     <v-container fluid>
       <v-row dense>
         <v-col cols="6" sm="4">
@@ -15,12 +19,11 @@
             <v-card-title>WEDDING</v-card-title>
             </v-img>
             <v-card-actions>
+                <v-btn color="primary" v-on:click="Wedding()">Visit</v-btn>
               <v-spacer></v-spacer>
-
               <v-btn icon>
                 <v-icon>mdi-heart</v-icon>
               </v-btn>
-
               <v-btn icon>
                 <v-icon>mdi-bookmark</v-icon>
               </v-btn>
@@ -42,6 +45,7 @@
             <v-card-title>CONCERT</v-card-title>
             </v-img>
             <v-card-actions>
+               <v-btn v-on:click="concert()" color="secondary">Visit</v-btn>
               <v-spacer></v-spacer>
 
               <v-btn icon>
@@ -69,7 +73,9 @@
             <v-card-title>BIRTHDAY PARTY</v-card-title>
             </v-img>
             <v-card-actions>
+              <v-btn color="primary" v-on:click="Birthday()">Visit</v-btn>
               <v-spacer></v-spacer>
+             
 
               <v-btn icon>
                 <v-icon>mdi-heart</v-icon>
@@ -116,6 +122,27 @@
     </template>
   </div>
 </template>
+<script>
+export default {
+  
+  methods:{
+    concert(){
+       this.$router.push({ path: "Concert" });
+      
+    }, Birthday(){
+       this.$router.push({ path: "Birthday" });
+      
+    },
+    Wedding(){
+       this.$router.push({ path: "Wedding" });
+      
+    }
+  }
+    
+  
+}
+</script>
+
 
 
 <style scoped>
@@ -148,5 +175,14 @@ h1 {
 }
 #left{
   float:left
+}
+#bg{
+  height: 100%;
+  width:100%;
+  top:0;
+  bottom:0;
+  background-image: url("../assets/wed.jpg");
+  background-size: cover;
+  
 }
 </style>

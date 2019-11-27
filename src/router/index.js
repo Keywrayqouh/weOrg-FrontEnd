@@ -5,7 +5,9 @@ import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
 import viewPorfolio from "../views/viewPorfolio.vue";
 import personalAccount from '../views/personalAccount.vue';
-import Concert from '../views/Concert.vue'
+import Concert from '../views/Concert.vue';
+import Birthday from '../views/Birthday.vue';
+import Wedding from '../views/Wedding.vue'
 
 
 Vue.use(VueRouter);
@@ -53,6 +55,16 @@ const routes = [
     path: '/concert', 
     name: 'concert',
     component: Concert
+  },
+  {
+    path: '/birthday', 
+    name: 'Birthday',
+    component: Birthday
+  },
+  {
+    path: '/wedding', 
+    name: 'Wedding',
+    component: Wedding
   },
 ];
 

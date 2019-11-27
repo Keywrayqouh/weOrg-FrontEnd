@@ -13,7 +13,9 @@
            <v-avatar size="150" style="margin-top:5%" >
           <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
         </v-avatar>
-        <h2>MEllyne GRace NAdela</h2><br>
+        <br>
+        <h2 id="name">MEllyne GRace NAdela</h2><br>
+        <v-btn v-on:click="editName">edit</v-btn>
         </center>
           <thead>
             <tr></tr>
@@ -62,16 +64,6 @@
     </template>
   </div>
 </template>
- 
-    
-
-  
-  
-
-
-  
-    
-  
 
 <script>
 export default {
@@ -108,6 +100,15 @@ export default {
         }
       ]
     };
+  },
+  methods:{
+    editName:()=>{
+      this.axios.put("http:localhost:8000/Update/"+ this.name,{
+
+      })
+
+
+    }
   }
 };
 </script>
